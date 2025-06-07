@@ -5,25 +5,45 @@ class SuperHeroRepository extends IRepository
 {
     async obtenerPorId(id)
     {
-        return await SuperHero.findById(id);
+        const encontrarPorId = await SuperHero.findById(id);
+        console.log(encontrarPorId);
+
+        return encontrarPorId;
     }
     async obtenerTodos()
     {
-        console.log('Estoy en repositorio para traer todos los superheroes');
         const superheroeEncontrado = await SuperHero.find({});
-        console.log(superheroeEncontrado);
 
         return superheroeEncontrado;
     }
+    async buscarPorAtributo(atributo, valor) 
+    {
+        const atributoValor = await SuperHero.find(
+        {
+        [atributo]: { $regex: valor, $options: 'i' }
+        });
+        console.log(atributoValor);
+        return atributoValor;
+    }
+
+    async obtenerMayoresDe30() 
+    {
+        return await SuperHero.find({ edad: { $gt: 30 } });
+    }
+    /*
     async buscarPorAtributo(atributo,valor)
     {
-        return await SuperHero.filter(hero =>
-        String(hero[atributo]).toLowerCase().includes(valor.toLowerCase()))
+        const atributoValor = await SuperHero.find(hero =>
+        String(hero[atributo]).toLowerCase().includes(valor.toLowerCase()));
+
+        console.log(atributoValor);
+        
+        return atributoValor;
     }
     async obtenerMayoresDe30()
     {
-        return await SuperHero.filter(hero => hero.edad > 30 );
-    }
+        return await SuperHero.find(hero => hero.edad > 30 );
+    }*/
 }
 
 export default new SuperHeroRepository();

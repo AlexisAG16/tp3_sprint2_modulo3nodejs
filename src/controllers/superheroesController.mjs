@@ -25,13 +25,9 @@ export async function obtenerSuperheroePorIdController(req,res)
 export async function obtenerTodosLosSuperheroesController(req,res)
 {
     try{
-            console.log('Estoy en la capa del controlador , en la funcion encontrar todos los superheroes');
             const superheroes = await obtenerTodosLosSuperheroes();
 
-            console.log('Estoy en la capa del controlador , en la funcion encontrar todos que son llamados de la capa de servicio',superheroes);
-
-
-            const superheroesFormateados = renderizarSuperheroe(superheroes);
+            const superheroesFormateados = renderizarListaSuperheroes(superheroes);
             console.log('Lista formateada de heroes',superheroesFormateados)
             res.status(200).json(superheroesFormateados);
         }
@@ -53,6 +49,9 @@ export async function buscarSuperheroesPorAtributoController(req,res)
                 { mensaje:'No se encontraron superheroes con ese atributo'});
             }
             const superheroesFormateados = renderizarListaSuperheroes(superheroes);
+            
+            console.log(superheroesFormateados);
+
             res.status(200).json(superheroesFormateados);
         }
     catch (error)

@@ -1,10 +1,7 @@
 export function renderizarSuperheroe(superheroe)
 {
-    console.log('Trayendo superheroes y renderizando',superheroe);
-
-    console.log('el nombre',superheroe.nombreReal);
-
     return {
+        id: superheroe.id,
         nombreSuperHeroe: superheroe.nombreSuperHeroe,
         nombreReal: superheroe.nombreReal,
         edad: superheroe.edad,

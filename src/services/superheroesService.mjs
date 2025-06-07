@@ -2,7 +2,12 @@ import superheroesRepository from '../repository/superheroesRepository.mjs';
 
 export async function obtenerSuperheroePorId(id)
 {
-    return await superheroesRepository.obtenerPorId(id);
+    //console.log(id);
+
+    const obtenerId = await superheroesRepository.obtenerPorId(id);
+    console.log(obtenerId);
+
+    return obtenerId;
 }
 
 export async function obtenerTodosLosSuperheroes()
@@ -17,10 +22,12 @@ export async function obtenerTodosLosSuperheroes()
 
 export async function buscarSuperheroesPorAtributo(atributo,valor)
 {
-    return superheroesRepository.buscarPorAtributo(atributo,valor);
+    const atributoVal = await superheroesRepository.buscarPorAtributo(atributo,valor);
+    console.log(atributoVal);
+    return atributoVal;
 }
 
-export function obtenerSuperheroesMayoresDe30()
+export async function obtenerSuperheroesMayoresDe30()
 {
-    return superheroesRepository.obtenerMayoresDe30();
+    return await superheroesRepository.obtenerMayoresDe30();
 }
