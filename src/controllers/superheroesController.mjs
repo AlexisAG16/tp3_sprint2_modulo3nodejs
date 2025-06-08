@@ -4,6 +4,9 @@ import { renderizarSuperheroe,renderizarListaSuperheroes } from '../views/respon
 
 export async function obtenerSuperheroePorIdController(req,res)
 {
+    /* const superheroeFormateado = renderizarSuperheroe(superheroe);
+    console.log(superheroeFormateado);*/
+    
     try{
             const { id } = req.params;
             const superheroe = await obtenerSuperheroePorId(id);
@@ -20,6 +23,7 @@ export async function obtenerSuperheroePorIdController(req,res)
     {
         res.status(500).send({ mensaje: 'Error al obtener el superhéroe',error: error.message });
     }
+    
 }
 
 export async function obtenerTodosLosSuperheroesController(req,res)
@@ -28,7 +32,7 @@ export async function obtenerTodosLosSuperheroesController(req,res)
             const superheroes = await obtenerTodosLosSuperheroes();
 
             const superheroesFormateados = renderizarListaSuperheroes(superheroes);
-            console.log('Lista formateada de heroes',superheroesFormateados)
+            
             res.status(200).json(superheroesFormateados);
         }
     catch(error)
@@ -50,7 +54,7 @@ export async function buscarSuperheroesPorAtributoController(req,res)
             }
             const superheroesFormateados = renderizarListaSuperheroes(superheroes);
             
-            console.log(superheroesFormateados);
+            //console.log(superheroesFormateados);
 
             res.status(200).json(superheroesFormateados);
         }

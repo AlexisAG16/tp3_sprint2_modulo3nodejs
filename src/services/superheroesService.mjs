@@ -12,18 +12,15 @@ export async function obtenerSuperheroePorId(id)
 
 export async function obtenerTodosLosSuperheroes()
 {
-    console.log('Estoy en la capa de servicios en la funcion obtener todos los superheroes');
     const RepoObtenerTodos = await superheroesRepository.obtenerTodos();
 
-    console.log('Estoy en la capa de servicios en la funcion de obtener todos devolviendo a todos los superheroes',RepoObtenerTodos);
-    
     return RepoObtenerTodos;
 }
 
 export async function buscarSuperheroesPorAtributo(atributo,valor)
 {
     const atributoVal = await superheroesRepository.buscarPorAtributo(atributo,valor);
-    console.log(atributoVal);
+    //console.log(atributoVal);
     return atributoVal;
 }
 
